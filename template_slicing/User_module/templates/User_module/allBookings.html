@@ -1,0 +1,40 @@
+{% extends 'User_module/layout.html' %}
+{% load static %}
+
+{% block body %}
+<section class="portfolio_section layout_padding-top">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                All Bookings
+            </h2>
+            <p>
+                There are many variations of portfolio
+            </p>
+        </div>
+
+        <div class=" mb-4 bg-light shadow">
+            <table class="table table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <th>Photography Type</th>
+                    <th>Booking Date</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                </tr>
+                {% for i in bookData %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.photography_ids.photography_name | title}}</td>
+                        <td>{{i.booking_date}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.status}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

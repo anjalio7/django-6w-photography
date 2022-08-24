@@ -1,0 +1,38 @@
+{% extends 'User_module/layout.html' %}
+{% load static %}
+
+{% block body %}
+<section class="portfolio_section layout_padding-top">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Our Portfolio
+        </h2>
+        <p>
+          There are many variations of portfolio
+        </p>
+      </div>
+
+      <div class="row mt-4">
+        {% if pdata|length > 0 %}
+            {% for i in pdata %}
+            <div class="col-md-6 mt-4 text-center">
+                <a href="{% url 'detailPortfolios' i.id %}">
+                    <img src="{{i.coverImage.url}}" class="shadow" alt="" width="500px" height="400px">
+                    <h5 class="mt-4 text-muted">{{i.photography_id.photography_name | upper}}</h5>
+                    <h4 class="mt-2 text-dark">{{i.title | title}}</h4>
+                </a>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12 text-center alert-danger p-2 mt-2">
+                No portfolio to display yet.
+            </div>
+        {% endif %}
+        
+      </div>
+    </div>
+
+    
+</section>
+{% endblock %}

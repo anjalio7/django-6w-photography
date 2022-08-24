@@ -1,0 +1,99 @@
+{% extends 'User_module/layout.html' %}
+{% load static %}
+
+{% block body %}
+<section class="portfolio_section layout_padding-top">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        {{pdata.title | title}}
+      </h2>
+      <p>
+        There are many variations of portfolio
+      </p>
+
+
+      <a href="{% url 'bookType' pdata.photography_id.id %}" class="btn btn-warning mb-4">Book Now!</a>
+
+      <div class="text-center">
+        <h3>Starting Price  - <span> {{pdata.photography_id.photography_price}}/-</span></h3>
+        <!-- <h4></h4> -->
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="row mb-4 bg-light shadow align-items-center">
+      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+        <img src="{{pdata.img1.url}}" class="w-100 shadow-1-strong rounded mb-4" height="450px" width="300px"
+          alt="Boat on Calm Water" />
+
+        <img src="{{pdata.img2.url}}" class="w-100 shadow-1-strong rounded mb-4" height="450px" width="300px"
+          alt="Wintry Mountain Landscape" />
+      </div>
+
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <img src="{{pdata.img3.url}}" class="w-100 shadow-1-strong rounded mb-4" height="450px" width="300px"
+          alt="Mountains in the Clouds" />
+
+        <!-- <img
+        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+        class="w-100 shadow-1-strong rounded mb-4" height = "450px" width = "300px"
+        alt="Boat on Calm Water"
+      /> -->
+      </div>
+
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <img src="{{pdata.img4.url}}" class="w-100 shadow-1-strong rounded mb-4" height="450px" width="300px"
+          alt="Waves at Sea" />
+
+        <img src="{{pdata.img5.url}}" class="w-100 shadow-1-strong rounded mb-4" height="450px" width="300px"
+          alt="Yosemite National Park" />
+      </div>
+    </div>
+    <!-- Gallery -->
+
+    
+
+    <div class="mt-4" style="margin-top: 8rem!important; margin-bottom: 8rem!important;">
+      <h4>Reviews</h4>
+
+      {% if user.is_authenticated %}
+      <form action="{% url 'addComments' pdata.id %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-10">
+            <input type="text" name = "commnt" placeholder="Comment..." class="form-control">
+          </div>
+          <div class="col-md-2">
+            <input type="submit" class="btn btn-warning">
+          </div>
+        </div>
+      </form>
+      {% endif %}
+      {% if comData|length > 0 %}
+        <div class="mt-4">
+          {% for i in comData %}
+          <div class="mb-2">
+            <strong>{{i.userId.username}}</strong> - <span class="">{{i.commentTime}}</span>
+            <p>{{i.comments}}</p>
+            {% if i.userId == user %}
+             <a href="{% url 'deleteComment' pdata.id i.id %}">
+              <small>Delete</small>
+             </a> 
+
+            {% endif %}
+            <hr>
+          </div>
+          {% endfor %}
+          
+        </div>
+      {% else %}
+        <div class="alert-warning p-2 mt-3">
+          <p>No comments to show.</p>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+{% endblock %}

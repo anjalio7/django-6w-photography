@@ -1,0 +1,42 @@
+{% extends 'sliced/layout.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container-fluid" class="bg-secondary text-dark mt-4">
+    <h1 align="center" class="bg-secondary text-white mt-4">TYPES OF PHOTOGRAPHY</h1>
+
+    <div class="row">
+        <div class="col-md-6 form-group mx-auto contact_section layout_padding text-white p-5"  >
+
+            <form class="" method="post" action="{% url 'edittypes' data.id %}">
+
+             {% csrf_token %}
+<input type="text" name="name" class="form-control" id="name" placeholder="enter name" value = {{data.photography_name}}   required >
+<input type="number" name="price" min="5000" class="form-control" id="price" placeholder="enter price" value = "{{data.photography_price}}" required >
+
+             <div class="col-md-6 form-group mx-auto " >
+
+            </div>
+            <div class="col-md-6 form-group mx-auto " >
+ 
+                <!--button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button-->
+            </div>
+            <div class="col-md-6 form-group mx-auto " >
+
+            </div>
+            <div class="col-md-6 form-group mx-auto " >
+
+                <!--button class="btn  my-6 my-sm-0 nav_search-btn" type="submit"></button-->
+            </div>
+<button class="d-block m-auto" type="submit">Add Type</button>
+
+            <div class="row">
+                <div class="col-md-3 form-group mx-auto py-3 " >
+                </div>
+            </div>
+
+            </form>
+        </div>
+    </div>  
+</div>
+{% endblock %}

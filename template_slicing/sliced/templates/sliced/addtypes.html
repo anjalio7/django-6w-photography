@@ -1,0 +1,66 @@
+{% extends 'sliced/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="container-fluid">
+        <h1 align="center" class="bg-secondary text-white mt-4">TYPES OF PHOTOGRAPHY</h1>
+
+    <div class="row">
+        <div class="col-md-6 form-group mx-auto contact_section layout_padding text-white p-5"  >
+
+            <form method="post" action="{% url 'addtypes' %}">
+                {% csrf_token %}
+                <input type="text" name="name" class="form-control" id="name" placeholder="enter name"  required >
+                <input type="number" name="price" min="5000" class="form-control" id="price" placeholder="enter price"  required >
+                <!-- <input type="submit" value="Add Type" class="btn btn-warning" > -->
+                <button class="d-block m-auto" type="submit">Add Type</button>
+                
+                <!-- <div class="col-md-6 form-group mx-auto py-3 " >
+   
+                   Photo Name :  
+               </div> -->
+               <!-- <div class="col-md-6 form-group mx-auto " >
+    
+                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+               </div>
+               <div class="col-md-6 form-group mx-auto " >
+   
+                   Price: 
+               </div> -->
+               <!-- <div class="col-md-6 form-group mx-auto " >
+   
+                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+               </div>
+               <div class="row">
+                   <div class="col-md-6 form-group mx-auto py-3 " >
+                   </div>
+               </div> -->
+               </form>
+            <!-- <form class="form-inline" method="post" action="{% url 'addtypes' %}">
+             {% csrf_token %}
+             <div class="col-md-6 form-group mx-auto py-3 " >
+
+                Photo Name :  <input type="text" name="name" class="form-control" id="name" placeholder="enter name"  required ><br><br>
+               
+            </div>
+            <div class="col-md-6 form-group mx-auto " >
+ 
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+            </div>
+            <div class="col-md-6 form-group mx-auto " >
+
+                Price: <input type="number" name="price" min="5000" class="form-control" id="price" placeholder="enter price"  required >
+            </div>
+            <div class="col-md-6 form-group mx-auto " >
+
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group mx-auto py-3 " >
+                    <input type="submit" value="Add Type" style="background-color: rgb(18,18,61); color:aliceblue;" >
+                </div>
+            </div>
+            </form> -->
+        </div>
+    </div>  
+</div>
+{% endblock %}

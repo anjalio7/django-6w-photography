@@ -1,0 +1,127 @@
+{% extends 'sliced/layout.html' %}
+{% load static %}
+{% block body %}
+<!-- <div class="container-fluid">
+    <h1 align="center" style="background-color: rgb(1, 12, 19); color:aliceblue">PHOTOGRAPHS</h1>
+
+    {% if message %}
+    <div class="alert-danger p-3">
+        {{message}}
+    </div>
+    {% endif %}
+    
+<div class="row">
+    <div class="col-md-12 form-group bg-secondary text-white p-5" >
+        
+        <form class=" form control" enctype="multipart/form-data" method="post" action="{% url 'editPortfolio' port.id %}">
+         {% csrf_token %}
+         <div class="col-md-6 form-group mx-auto py-3 " >
+
+            Name :              <select name="name" id="">
+                <option selected disabled >select option </option>
+                {% for i in data %}
+                    <option {% if i.id == port.photography_id.id %}selected {% endif %} value="{{i.id}}">{{i.photography_name}}</option>
+                {% endfor %}
+            </select>
+                
+            <div class="col-md-6 form-group py-2 " >
+            </div>
+            <input type="file" name="img1" class="form-control" id="img1" placeholder="img1"  required multiple >
+
+            <div class="col-md-6 form-group mx-auto py-2 " >
+
+            </div>
+            
+            <label for="">Uploaded Images</label>
+            <div class="border-white">
+                <div class="d-flex justify-content-around">
+                    <img src="{{port.img1.url}}" alt="" height="200px" width="200px">
+                    <img src="{{port.img2.url}}" alt="" height="200px" width="200px">
+                    <img src="{{port.img3.url}}" alt="" height="200px" width="200px">
+                    <img src="{{port.img4.url}}" alt="" height="200px" width="200px">
+                    <img src="{{port.img5.url}}" alt="" height="200px" width="200px">
+                </div>
+            </div><br><br>
+
+            <input type="submit" value = "Submit" style="background-color: rgb(1, 16, 26); color:aliceblue;">
+            </div>
+        </div>
+        </form>
+    </div>
+</div> -->
+
+
+<div class="container-fluid" class="bg-secondary text-dark mt-4">
+    <h1 align="center" class="bg-secondary text-white mt-4">Portfolio</h1>
+
+    {% if message %}
+    <div class="alert-danger p-3">
+        {{message}}
+    </div>
+    {% endif %}
+    
+</div>
+<div class="row">
+    <div class="col-md-8 form-group mx-auto contact_section layout_padding text-white p-5"  >
+        
+        <form class=" form control" enctype="multipart/form-data" method="post" action="{% url 'editPortfolio' port.id %}">
+         {% csrf_token %}
+
+         <label for="" class="form-label text-dark">Cover Image</label>
+         <input type="file" name = "cover">
+         <select name="name" id="">
+             <option selected disabled >select option </option>
+             {% for i in data %}
+                 <option {% if i.id == port.photography_id.id %}selected {% endif %} value="{{i.id}}">{{i.photography_name}}</option>
+
+                {% endfor %}
+            </select>
+            <input type="text" name="title"  id="img1" placeholder="Title" value="{{port.title}}" required >
+
+            <input type="file" name="img1"  id="img1" placeholder="img1"  multiple >
+            <!-- <input type="submit" value = "Submit"> -->
+            <button class="d-block m-auto" type="submit">Edit Portfolio</button>
+
+            <!--div class="ml-3 d-flex justify-content-around mt-4">
+                <div class="mr-2 shadow">
+                    <img src="{{port.img1.url}}" alt="" height="200px" width="160px"> 
+                </div>
+                <div class="mr-2 shadow">
+                    <img src="{{port.img2.url}}" alt="" height="200px" width="160px">
+                </div>
+                <div class="mr-2 shadow">
+                    <img src="{{port.img3.url}}" alt="" height="200px" width="160px">
+                </div>
+                <div class="mr-2 shadow">
+                    <img src="{{port.img4.url}}" alt="" height="200px" width="160px">
+                </div>
+                <div class="mr-2 shadow">
+                    <img src="{{port.img5.url}}" alt="" height="200px" width="160px">
+                </div>
+            </div-->
+        </div>
+        </form>
+    </div>
+</div>
+
+<div class="ml-3 d-flex justify-content-around mt-4">
+    <div class="mr-2 shadow">
+        <img src="{{port.img1.url}}" alt="" height="200px" width="250px"> 
+    </div>
+    <div class="mr-2 shadow">
+        <img src="{{port.img2.url}}" alt="" height="200px" width="250px">
+    </div>
+    <div class="mr-2 shadow">
+        <img src="{{port.img3.url}}" alt="" height="200px" width="250px">
+    </div>
+    <div class="mr-2 shadow">
+        <img src="{{port.img4.url}}" alt="" height="200px" width="250px">
+    </div>
+    <div class="mr-2 shadow">
+        <img src="{{port.img5.url}}" alt="" height="200px" width="250px">
+    </div>
+</div>
+{% endblock %}
+
+
+

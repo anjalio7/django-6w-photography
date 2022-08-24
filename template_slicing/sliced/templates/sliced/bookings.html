@@ -1,0 +1,55 @@
+{% extends 'sliced/layout.html' %}
+{% load static %}
+{% block body %}
+<h1 align="center" class="bg-secondary text-white mt-4">Bookings</h1>
+<div class="container-fluid"></div>
+    <!-- <div class="row">
+        <div class="col-md-12 mx-2 text-white">
+            <a class="" href="{% url 'addtypes' %}" ><button type="button" class="btn btn-warning d-block m-auto">Add</button>
+            </button>
+            <br><br>
+        </div>
+    </div> -->
+</div>
+<div class="">
+    <div class="container mt-4" style="margin-top: 3.5rem!important;">
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Photography Type</th>
+                <th>Booking Date</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Update Status</th>
+            </tr>
+            {% for i in bookData %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.photography_ids.photography_name | title}}</td>
+                    <td>{{i.booking_date}}</td>
+                    <td>{{i.address}}</td>
+                    <td>
+                        <div class="badge text-white {% if i.status == 'Accept' %} bg-success {% else %} bg-danger {% endif %}">{{i.status}}</div>
+                        </td>
+                    <td>
+                        {% if i.status == 'pending' %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a class="btn btn-warning btn-sm" href="{% url 'changeStatus' i.id 'Accept' %}">Accept</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-danger btn-sm" href="{% url 'changeStatus' i.id 'Reject' %}">Reject</a>
+                                </div>
+                            </div>
+
+                            {% else %}
+                            <span>-</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+</div>
+{% endblock %}

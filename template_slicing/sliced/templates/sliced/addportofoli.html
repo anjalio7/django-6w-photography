@@ -1,0 +1,40 @@
+{% extends 'sliced/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="container-fluid" class="bg-secondary text-dark mt-4">
+    <h1 align="center" class="bg-secondary text-white mt-4">Portfolio</h1>
+
+    {% if message %}
+    <div class="alert-danger p-3">
+        {{message}}
+    </div>
+    {% endif %}
+    
+</div>
+<div class="row">
+    <div class="col-md-6 form-group mx-auto contact_section layout_padding text-white p-5"  >
+        
+        <form class=" form control" enctype="multipart/form-data" method="post" action="{% url 'addportfoli' %}">
+         {% csrf_token %}
+         <label for="" class="form-label text-dark">Cover Image</label>
+         <input type="file" name = "cover" required>
+         <select name="name" id="">
+             <option selected disabled >select option </option>
+             {% for i in data %}
+                 <option value="{{i.id}}">{{i.photography_name}}</option>
+                    
+                {% endfor %}
+            </select>
+            <input type="text" name="title"  id="img1" placeholder="Title" required >
+            <input type="file" name="img1"  id="img1" placeholder="img1" required multiple >
+            <!-- <input type="submit" value = "Submit"> -->
+            <button class="d-block m-auto" type="submit">Add Portfolio</button>
+        </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+

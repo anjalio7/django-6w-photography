@@ -1,0 +1,49 @@
+{% extends 'sliced/layout.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container-fluid" class="bg-secondary text-dark mt-4">
+    <h1 align="center" class="bg-secondary text-white mt-4">{{data.title | upper}}</h1> 
+</div>
+<div class="container-fluid"></div>
+    <div class="row">
+        <div class="col-md-12 mt-4 mx-2 text-white">
+            <a class="" href="{% url 'editPortfolio' data.id %}" ><button type="button" class="btn btn-warning d-block m-auto">Edit Portfolio</button>
+            </button></a>
+            <br><br>
+        </div>
+    </div>
+</div>
+    <div class="container">
+        <div class="row flex-wrap">
+            <div class="col-md-3">
+              <img src="{{data.img1.url}}" alt="Nature" width="200px" height="200px">
+            </div>
+            <div class="col-md-3">
+              <img src="{{data.img2.url}}" alt="Snow" width="200px" height="200px">
+            </div>
+            <div class="col-md-3">
+              <img src="{{data.img3.url}}" alt="Mountains" width="200px" height="200px">
+            </div>
+            <div class="col-md-3">
+              <img src="{{data.img4.url}}" alt="Lights" width="200px" height="200px">
+            </div>
+            <div class="col-md-3 mt-4">
+                <img src="{{data.img5.url}}" alt="Lights" width="200px" height="200px">
+              </div>
+          </div>
+          
+          <!-- The expanding image container -->
+          <div class="container">
+            <!-- Close the image -->
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+          
+            <!-- Expanded image -->
+            <img id="expandedImg" style="width:100%">
+          
+            <!-- Image text -->
+            <div id="imgtext"></div>
+          </div>
+    </div>
+
+{% endblock %}

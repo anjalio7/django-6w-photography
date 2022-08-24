@@ -1,0 +1,41 @@
+{% extends 'User_module/layout.html' %}
+{% load static %}
+
+{% block body %}
+<section class="portfolio_section layout_padding-top">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Create Booking
+            </h2>
+            <p>
+                There are many variations of portfolio
+            </p>
+            {% if msg %}
+            <div class="alert-danger mt-2 p-2">
+              {{msg}}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class=" mb-4 bg-light shadow">
+            <form class="form control  layout_padding p-3" action="" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <label for="" class="form-label">Booking Date</label>
+                        <input type="date" name="bookDate" class="form-control" required>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="" class="form-label">Address</label>
+                        <input type="text" name="address" class="form-control" required>
+                    </div>
+                    <input type="submit" class="btn btn-warning d-block m-auto" value="Add Booking">
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

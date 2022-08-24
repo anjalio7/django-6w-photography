@@ -1,0 +1,46 @@
+{% extends 'sliced/layout.html' %}
+{% load static %}
+{% block body %}
+<h1 align="center" class="bg-secondary text-white mt-4">TYPES</h1>
+<div class="container-fluid"></div>
+    <div class="row">
+        <div class="col-md-12 mx-2 text-white">
+            <a class="" href="{% url 'addtypes' %}" ><button type="button" class="btn btn-warning d-block m-auto">Add</button>
+            </button>
+            <br><br>
+        </div>
+    </div>
+</div>
+<div class="">
+    <div class="container ">
+        <table class="table table-bordered"></h3>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for i in topic  %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.photography_name}}</td>
+                    <td>{{i.photography_price}} /-</td>
+                    <td>
+                        <a href="{% url 'edittypes' i.id %}">
+                            <button class="btn btn-outline-warning">Edit</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'deletetypes' i.id %}">
+                            <button class="btn btn-outline-warning">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+    </div>
+    
+</div>
+{% endblock %}
